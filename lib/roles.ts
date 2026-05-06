@@ -26,8 +26,8 @@ export const ROLE_OPTIONS: UserRole[] = [
   'super_admin', 'team_lead', 'social_media_manager', 'member', 'client',
 ]
 
-export function getUserRole(publicMetadata: Record<string, unknown> | null | undefined): UserRole {
+export function getUserRole(publicMetadata: Record<string, unknown> | null | undefined): UserRole | null {
   const role = publicMetadata?.role as UserRole | undefined
   if (role && ROLE_LABELS[role]) return role
-  return 'member'
+  return null
 }

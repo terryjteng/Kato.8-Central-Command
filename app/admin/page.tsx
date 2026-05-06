@@ -113,7 +113,7 @@ export default function AdminPage() {
 
               {/* Rows */}
               {users.map((u, idx) => {
-                const roleStyle = ROLE_COLORS[u.role]
+                const roleStyle = ROLE_COLORS[u.role] ?? ROLE_COLORS['member']
                 const isSelf = u.id === user?.id
                 return (
                   <div

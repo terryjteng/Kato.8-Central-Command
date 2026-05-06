@@ -1,13 +1,47 @@
 'use client'
 
-import { useUser } from '@clerk/nextjs'
+import { useUser, useClerk } from '@clerk/nextjs'
 import { TOOLS } from '@/lib/tools'
 import { getUserRole, ROLE_LABELS, ROLE_COLORS } from '@/lib/roles'
 import ToolCard from '@/components/ToolCard'
 import Sidebar from '@/components/Sidebar'
 
+function PendingApproval({ email, onSignOut }: { email: string; onSignOut: () => void }) {
+  return (
+    <div className="flex h-screen items-center justify-center" style={{ background: '#f8fafc' }}>
+      <div className="max-w-md w-full mx-4 text-center">
+        <div
+          className="flex items-center justify-center w-16 h-16 rounded-2xl mx-auto mb-6 text-white text-2xl font-bold"
+          style={{ background: 'linear-gradient(135deg, #7c3aed, #4f46e5)' }}
+        >
+          K8
+        </div>
+        <h1 className="text-xl font-semibold text-slate-900 mb-2">Access Pending</h1>
+        <p className="text-sm text-slate-500 leading-relaxed mb-2">
+          Your account <span className="font-medium text-slate-700">{email}</span> has been created
+          but hasn't been assigned a role yet.
+        </p>
+        <p className="text-sm text-slate-400 mb-8">
+          A Kato.8 admin will approve your access shortly. You'll be able to log back in once
+          your role has been assigned.
+        </p>
+        <button
+          onClick={onSignOut}
+          className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition-all"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+          </svg>
+          Sign out
+        </button>
+      </div>
+    </div>
+  )
+}
+
 export default function DashboardPage() {
   const { user, isLoaded } = useUser()
+  const { signOut } = useClerk()
 
   if (!isLoaded) {
     return (
@@ -18,8 +52,18 @@ export default function DashboardPage() {
   }
 
   const role = getUserRole(user?.publicMetadata as Record<string, unknown>)
-  const roleStyle = ROLE_COLORS[role]
 
+  if (role === null) {
+    const email = user?.emailAddresses?.[0]?.emailAddress ?? ''
+    return (
+      <PendingApproval
+        email={email}
+        onSignOut={() => signOut({ redirectUrl: '/sign-in' })}
+      />
+    )
+  }
+
+  const roleStyle = ROLE_COLORS[role]
   const visibleTools = TOOLS.filter(t => t.access[role] !== 'none')
   const lockedTools  = TOOLS.filter(t => t.access[role] === 'none')
 
