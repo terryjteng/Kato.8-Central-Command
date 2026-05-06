@@ -1,0 +1,22 @@
+import type { Metadata } from 'next'
+import { ClerkProvider } from '@clerk/nextjs'
+import './globals.css'
+
+export const metadata: Metadata = {
+  title: 'Kato.8 Studios — Central Command',
+  description: 'The unified studio hub for all Kato.8 tools and platforms',
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <ClerkProvider
+      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+      afterSignOutUrl="/sign-in"
+      dynamic
+    >
+      <html lang="en">
+        <body>{children}</body>
+      </html>
+    </ClerkProvider>
+  )
+}
