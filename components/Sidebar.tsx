@@ -25,12 +25,8 @@ export default function Sidebar({ role, activePage }: SidebarProps) {
       {/* Logo */}
       <div className="px-5 pt-5 pb-4" style={{ borderBottom: '1px solid #2e3a57' }}>
         <div className="flex items-center gap-2.5">
-          <div
-            className="flex items-center justify-center rounded-lg text-white font-bold text-sm flex-shrink-0"
-            style={{ width: '32px', height: '32px', background: 'linear-gradient(135deg, #7c3aed, #4f46e5)' }}
-          >
-            K8
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/kato8-icon.png" alt="K8" width={32} height={32} className="rounded-lg flex-shrink-0" />
           <div>
             <div className="text-white font-semibold text-sm leading-tight">Kato.8 Studios</div>
             <div className="text-slate-500 text-xs">Central Command</div>

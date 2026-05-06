@@ -26,10 +26,8 @@ export default function SignInPage() {
       }} />
       <div className="relative z-10 flex flex-col items-center gap-8">
         <div className="flex flex-col items-center gap-3">
-          <div className="flex items-center justify-center rounded-2xl text-white font-bold text-2xl"
-            style={{ width: '64px', height: '64px', background: 'linear-gradient(135deg, #7c3aed, #4f46e5)', boxShadow: '0 8px 32px rgba(124,58,237,0.4)' }}>
-            K8
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/kato8-icon.png" alt="Kato.8 Studios" width={64} height={64} className="rounded-2xl" style={{ boxShadow: '0 8px 32px rgba(124,58,237,0.4)' }} />
           <div className="text-center">
             <div className="text-white font-semibold text-xl">Kato.8 Studios</div>
             <div className="text-slate-400 text-sm">Central Command</div>

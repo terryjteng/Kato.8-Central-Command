@@ -26,12 +26,8 @@ export default async function RootPage() {
       <div className="relative z-10 flex flex-col items-center gap-8 px-6 text-center">
         {/* Logo */}
         <div className="flex flex-col items-center gap-4">
-          <div
-            className="flex items-center justify-center rounded-2xl text-white font-bold text-3xl"
-            style={{ width: '80px', height: '80px', background: 'linear-gradient(135deg, #7c3aed, #4f46e5)', boxShadow: '0 16px 48px rgba(124,58,237,0.5)' }}
-          >
-            K8
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/kato8-icon.png" alt="Kato.8 Studios" width={80} height={80} className="rounded-2xl" style={{ boxShadow: '0 16px 48px rgba(124,58,237,0.5)' }} />
           <div>
             <div className="text-white font-bold text-3xl tracking-tight">Kato.8 Studios</div>
             <div className="text-slate-400 text-base mt-1 font-medium tracking-widest uppercase text-sm">

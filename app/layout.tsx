@@ -12,6 +12,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <ClerkProvider
       publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
       afterSignOutUrl="/sign-in"
+      afterSignInUrl="/dashboard"
+      afterSignUpUrl="/dashboard"
       dynamic
     >
       <html lang="en">
