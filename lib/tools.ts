@@ -23,7 +23,7 @@ export const TOOLS: Tool[] = [
     description: 'Week view calendar, kanban task boards, and team availability across all active game projects.',
     color: '#7c3aed',
     iconPath: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z',
-    vercelUrl: 'https://calendar-scheduler-orcin.vercel.app',
+    vercelUrl: 'https://scheduler.kato8studiosapp.xyz',
     access: {
       super_admin:          'super_admin',
       team_lead:            'full',
@@ -46,7 +46,7 @@ export const TOOLS: Tool[] = [
     description: 'Onboarding, compliance tracking, org chart, and hiring pipeline for Kato.8 Studios.',
     color: '#0d9488',
     iconPath: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z',
-    vercelUrl: 'https://hr-tool-blush.vercel.app',
+    vercelUrl: 'https://hr.kato8studiosapp.xyz',
     access: {
       super_admin:          'super_admin',
       team_lead:            'full',
@@ -69,7 +69,7 @@ export const TOOLS: Tool[] = [
     description: 'Cross-platform analytics, scheduling, and content performance tracking for all studio channels.',
     color: '#2563eb',
     iconPath: 'M13 7h8m0 0v8m0-8l-8 8-4-4-6 6',
-    vercelUrl: 'https://social-media-dash-three.vercel.app',
+    vercelUrl: 'https://social.kato8studiosapp.xyz',
     access: {
       super_admin:          'super_admin',
       team_lead:            'view',
@@ -92,8 +92,7 @@ export const TOOLS: Tool[] = [
     description: 'Internal video editing, review, and publishing pipeline for studio content.',
     color: '#e11d48',
     iconPath: 'M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.899L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z',
-    vercelUrl: '',
-    comingSoon: true,
+    vercelUrl: 'https://video.kato8studiosapp.xyz',
     access: {
       super_admin:          'super_admin',
       team_lead:            'none',
@@ -116,7 +115,7 @@ export const TOOLS: Tool[] = [
     description: 'Private AI assistant for studio operations, strategy, and executive decision-making.',
     color: '#d97706',
     iconPath: 'M13 10V3L4 14h7v7l9-11h-7z',
-    vercelUrl: 'https://executive-assistant-eight.vercel.app',
+    vercelUrl: 'https://ea.kato8studiosapp.xyz',
     access: {
       super_admin:          'super_admin',
       team_lead:            'none',
@@ -139,7 +138,7 @@ export const TOOLS: Tool[] = [
     description: 'AI-assisted legal document review, contract analysis, and compliance tooling.',
     color: '#475569',
     iconPath: 'M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3',
-    vercelUrl: 'https://legal-agent.vercel.app',
+    vercelUrl: 'https://legal.kato8studiosapp.xyz',
     access: {
       super_admin:          'super_admin',
       team_lead:            'none',
