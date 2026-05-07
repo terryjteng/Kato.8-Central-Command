@@ -111,7 +111,7 @@ export default function DashboardPage() {
             <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-4">Your Tools</h2>
             <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))' }}>
               {visibleTools.map(tool => (
-                <ToolCard key={tool.id} tool={tool} accessLevel={tool.access[role]} accessLabel={tool.accessLabel[role]} />
+                <ToolCard key={tool.id} tool={tool} accessLevel={tool.access[role]} accessLabel={tool.accessLabel[role]} comingSoon={tool.comingSoon} />
               ))}
             </div>
           </div>

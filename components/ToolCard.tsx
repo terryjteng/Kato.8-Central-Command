@@ -16,11 +16,12 @@ interface ToolCardProps {
   accessLevel: AccessLevel
   accessLabel: string
   locked?: boolean
+  comingSoon?: boolean
 }
 
-export default function ToolCard({ tool, accessLevel, accessLabel, locked }: ToolCardProps) {
+export default function ToolCard({ tool, accessLevel, accessLabel, locked, comingSoon }: ToolCardProps) {
   const badge = ACCESS_BADGE[accessLevel]
-  const canOpen = !locked && accessLevel !== 'none'
+  const canOpen = !locked && !comingSoon && accessLevel !== 'none'
 
   return (
     <div
@@ -78,6 +79,13 @@ export default function ToolCard({ tool, accessLevel, accessLabel, locked }: Too
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>
           </a>
+        ) : comingSoon ? (
+          <div className="flex items-center justify-center gap-1.5 w-full py-2.5 text-xs font-medium text-slate-400 rounded-xl bg-slate-50 border border-slate-100">
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Coming Soon
+          </div>
         ) : (
           <div className="flex items-center justify-center gap-1.5 w-full py-2.5 text-xs font-medium text-slate-400 rounded-xl bg-slate-50 border border-slate-100 cursor-not-allowed">
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
