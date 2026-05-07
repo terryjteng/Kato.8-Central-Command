@@ -116,8 +116,7 @@ export const TOOLS: Tool[] = [
     description: 'Private AI assistant for studio operations, strategy, and executive decision-making.',
     color: '#d97706',
     iconPath: 'M13 10V3L4 14h7v7l9-11h-7z',
-    vercelUrl: '',
-    comingSoon: true,
+    vercelUrl: 'https://executive-assistant-eight.vercel.app',
     access: {
       super_admin:          'super_admin',
       team_lead:            'none',
@@ -140,8 +139,7 @@ export const TOOLS: Tool[] = [
     description: 'AI-assisted legal document review, contract analysis, and compliance tooling.',
     color: '#475569',
     iconPath: 'M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3',
-    vercelUrl: '',
-    comingSoon: true,
+    vercelUrl: 'https://legal-agent.vercel.app',
     access: {
       super_admin:          'super_admin',
       team_lead:            'none',
