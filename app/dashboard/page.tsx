@@ -5,6 +5,7 @@ import { TOOLS } from '@/lib/tools'
 import { getUserRole, ROLE_LABELS, ROLE_COLORS } from '@/lib/roles'
 import ToolCard from '@/components/ToolCard'
 import Sidebar from '@/components/Sidebar'
+import { useToolStats } from '@/lib/useToolStats'
 
 function PendingApproval({ email, onSignOut }: { email: string; onSignOut: () => void }) {
   return (
@@ -42,6 +43,8 @@ function PendingApproval({ email, onSignOut }: { email: string; onSignOut: () =>
 export default function DashboardPage() {
   const { user, isLoaded } = useUser()
   const { signOut } = useClerk()
+  const role = isLoaded ? getUserRole(user?.publicMetadata as Record<string, unknown>) : null
+  const toolStats = useToolStats(role ? TOOLS.filter(t => t.access[role] !== 'none').map(t => t.id) : [])
 
   if (!isLoaded) {
     return (
@@ -50,8 +53,6 @@ export default function DashboardPage() {
       </div>
     )
   }
-
-  const role = getUserRole(user?.publicMetadata as Record<string, unknown>)
 
   if (role === null) {
     const email = user?.emailAddresses?.[0]?.emailAddress ?? ''
@@ -111,7 +112,7 @@ export default function DashboardPage() {
             <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-4">Your Tools</h2>
             <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))' }}>
               {visibleTools.map(tool => (
-                <ToolCard key={tool.id} tool={tool} accessLevel={tool.access[role]} accessLabel={tool.accessLabel[role]} comingSoon={tool.comingSoon} />
+                <ToolCard key={tool.id} tool={tool} accessLevel={tool.access[role]} accessLabel={tool.accessLabel[role]} comingSoon={tool.comingSoon} stats={toolStats[tool.id]} />
               ))}
             </div>
           </div>

@@ -11,15 +11,21 @@ const ACCESS_BADGE: Record<AccessLevel, { label: string; bg: string; text: strin
   none:          { label: 'No Access',   bg: 'bg-slate-100',  text: 'text-slate-400'  },
 }
 
+export interface ToolStat {
+  label: string
+  warn?: boolean
+}
+
 interface ToolCardProps {
   tool: Tool
   accessLevel: AccessLevel
   accessLabel: string
   locked?: boolean
   comingSoon?: boolean
+  stats?: ToolStat[]
 }
 
-export default function ToolCard({ tool, accessLevel, accessLabel, locked, comingSoon }: ToolCardProps) {
+export default function ToolCard({ tool, accessLevel, accessLabel, locked, comingSoon, stats }: ToolCardProps) {
   const badge = ACCESS_BADGE[accessLevel]
   const canOpen = !locked && !comingSoon && accessLevel !== 'none'
 
@@ -63,7 +69,21 @@ export default function ToolCard({ tool, accessLevel, accessLabel, locked, comin
         </div>
 
         {/* Description */}
-        <p className="text-xs text-slate-500 leading-relaxed mb-5">{tool.description}</p>
+        <p className={`text-xs text-slate-500 leading-relaxed ${stats?.length ? "mb-3" : "mb-5"}`}>{tool.description}</p>
+
+        {/* Live counts from the tool, when it reports any */}
+        {stats && stats.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 mb-4">
+            {stats.map(s => (
+              <span
+                key={s.label}
+                className={`text-[11px] font-medium px-2 py-0.5 rounded-md ${s.warn ? "bg-amber-50 text-amber-800" : "bg-slate-100 text-slate-600"}`}
+              >
+                {s.label}
+              </span>
+            ))}
+          </div>
+        )}
 
         {/* Open button */}
         {canOpen ? (
