@@ -4,8 +4,9 @@ import { getUserRole, ROLE_OPTIONS, UserRole } from '@/lib/roles'
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { userId: string } }
+  { params }: { params: Promise<{ userId: string }> }
 ) {
+  const { userId: targetId } = await params
   const { userId: callerId } = await auth()
   if (!callerId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
@@ -19,7 +20,7 @@ export async function PATCH(
   }
 
   // Prevent self-demotion
-  if (params.userId === callerId) {
+  if (targetId === callerId) {
     return NextResponse.json({ error: 'Cannot change your own role' }, { status: 400 })
   }
 
@@ -29,7 +30,7 @@ export async function PATCH(
     return NextResponse.json({ error: 'Invalid role' }, { status: 400 })
   }
 
-  await clerk.users.updateUserMetadata(params.userId, {
+  await clerk.users.updateUserMetadata(targetId, {
     publicMetadata: { role },
   })
 
